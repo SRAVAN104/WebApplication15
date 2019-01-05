@@ -7,12 +7,12 @@
       <Schema Namespace="inventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Employee">
           <Key>
-            <PropertyRef Name="Emp_ID" />
+            <PropertyRef Name="Email" />
           </Key>
           <Property Name="Emp_ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" />
-          <Property Name="Password" Type="nchar" MaxLength="10" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
@@ -43,7 +43,7 @@
           <Property Name="Quantity" Type="int" />
           <Property Name="Total_price" Type="float" />
           <Property Name="Date" Type="date" />
-          <Property Name="Emp_ID" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_stock_supplier">
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
@@ -62,10 +62,10 @@
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
-              <PropertyRef Name="Emp_ID" />
+              <PropertyRef Name="Email" />
             </Principal>
             <Dependent Role="Transaction">
-              <PropertyRef Name="Emp_ID" />
+              <PropertyRef Name="Email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -106,12 +106,12 @@
       <Schema Namespace="inventoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Employee">
           <Key>
-            <PropertyRef Name="Emp_ID" />
+            <PropertyRef Name="Email" />
           </Key>
           <Property Name="Emp_ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_Employee" FromRole="Employee" ToRole="Transaction" />
         </EntityType>
         <EntityType Name="Stock">
@@ -146,7 +146,7 @@
           <Property Name="Quantity" Type="Int32" />
           <Property Name="Total_price" Type="Double" />
           <Property Name="Date" Type="DateTime" Precision="0" />
-          <Property Name="Emp_ID" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Transaction_Employee" FromRole="Transaction" ToRole="Employee" />
           <NavigationProperty Name="Stock" Relationship="Self.FK_Transaction_Stock" FromRole="Transaction" ToRole="Stock" />
         </EntityType>
@@ -155,10 +155,10 @@
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
-              <PropertyRef Name="Emp_ID" />
+              <PropertyRef Name="Email" />
             </Principal>
             <Dependent Role="Transaction">
-              <PropertyRef Name="Emp_ID" />
+              <PropertyRef Name="Email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -250,7 +250,7 @@
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="Total_price" ColumnName="Total_price" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Emp_ID" ColumnName="Emp_ID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

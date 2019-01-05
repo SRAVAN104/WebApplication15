@@ -19,7 +19,7 @@ namespace WebApplication15.Models
         public Nullable<int> Quantity { get; set; }
         public Nullable<double> Total_price { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<int> Emp_ID { get; set; }
+        public string Email { get; set; }
     
         public virtual Employee Employee { get; set; }
         public virtual Stock Stock { get; set; }
