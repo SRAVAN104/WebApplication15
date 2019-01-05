@@ -25,6 +25,8 @@ namespace WebApplication15.Models
         {
         }
 
+        public DbSet<Supplier> SupplierCS { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
