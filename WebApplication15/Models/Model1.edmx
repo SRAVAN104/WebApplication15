@@ -18,7 +18,7 @@
           <Key>
             <PropertyRef Name="Stock_ID" />
           </Key>
-          <Property Name="Stock_ID" Type="int" Nullable="false" />
+          <Property Name="Stock_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Quantity" Type="int" />
           <Property Name="Price" Type="float" />
@@ -28,17 +28,17 @@
           <Key>
             <PropertyRef Name="Supplier_ID" />
           </Key>
-          <Property Name="Supplier_ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="10" />
-          <Property Name="No_phone" Type="nchar" MaxLength="10" />
-          <Property Name="Email" Type="nchar" MaxLength="10" />
-          <Property Name="Address" Type="nchar" MaxLength="10" />
+          <Property Name="Supplier_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="No_phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
             <PropertyRef Name="No_Transaction" />
           </Key>
-          <Property Name="No_Transaction" Type="int" Nullable="false" />
+          <Property Name="No_Transaction" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Stock_ID" Type="int" />
           <Property Name="Quantity" Type="int" />
           <Property Name="Total_price" Type="float" />
@@ -118,7 +118,7 @@
           <Key>
             <PropertyRef Name="Stock_ID" />
           </Key>
-          <Property Name="Stock_ID" Type="Int32" Nullable="false" />
+          <Property Name="Stock_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="Price" Type="Double" />
@@ -130,18 +130,18 @@
           <Key>
             <PropertyRef Name="Supplier_ID" />
           </Key>
-          <Property Name="Supplier_ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="No_phone" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Supplier_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="No_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Stocks" Relationship="Self.FK_stock_supplier" FromRole="Supplier" ToRole="Stock" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
             <PropertyRef Name="No_Transaction" />
           </Key>
-          <Property Name="No_Transaction" Type="Int32" Nullable="false" />
+          <Property Name="No_Transaction" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Stock_ID" Type="Int32" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="Total_price" Type="Double" />
@@ -186,7 +186,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="inventoryEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="inventoryEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="Stocks" EntityType="Self.Stock" />
           <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
@@ -209,7 +209,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="inventoryModelStoreContainer" CdmEntityContainer="inventoryEntities1">
+        <EntityContainerMapping StorageEntityContainer="inventoryModelStoreContainer" CdmEntityContainer="inventoryEntities2">
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="inventoryModel.Employee">
               <MappingFragment StoreEntitySet="Employee">

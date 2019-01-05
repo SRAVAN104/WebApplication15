@@ -13,7 +13,7 @@ namespace WebApplication15.Controllers
 {
     public class SuppliersController : Controller
     {
-        private inventoryEntities1 db = new inventoryEntities1();
+        private inventoryEntities2 db = new inventoryEntities2();
 
         // GET: Suppliers
         public async Task<ActionResult> Index()
@@ -47,7 +47,7 @@ namespace WebApplication15.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Supplier_ID,Name,No_phone,Email,Address")] Supplier supplier)
+        public async Task<ActionResult> Create([Bind(Include = "Name,No_phone,Email,Address")] Supplier supplier)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace WebApplication15.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Supplier_ID,Name,No_phone,Email,Address")] Supplier supplier)
+        public async Task<ActionResult> Edit([Bind(Include = "Name,No_phone,Email,Address")] Supplier supplier)
         {
             if (ModelState.IsValid)
             {
