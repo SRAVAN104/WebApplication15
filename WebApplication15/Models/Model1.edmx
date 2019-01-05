@@ -131,10 +131,10 @@
             <PropertyRef Name="Supplier_ID" />
           </Key>
           <Property Name="Supplier_ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="No_phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="No_phone" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Stocks" Relationship="Self.FK_stock_supplier" FromRole="Supplier" ToRole="Stock" />
         </EntityType>
         <EntityType Name="Transaction">

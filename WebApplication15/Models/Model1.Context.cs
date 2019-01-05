@@ -29,7 +29,5 @@ namespace WebApplication15.Models
         public virtual DbSet<Stock> Stocks { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
-
-        public System.Data.Entity.DbSet<WebApplication15.Models.SupplierCS> Supplier { get; set; }
     }
 }
